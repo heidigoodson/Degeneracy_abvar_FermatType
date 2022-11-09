@@ -60,8 +60,8 @@ def RestrictedU(m,d):
 
     """
     size=2*d
-    maxvalue=size*m-d*(size+1) #the largest multiple of m that the sum of a_i can yield
-    Ulist=[] #this is the list of possible values for the sum of the tuple entries
+    maxvalue=size*m-d*(size+1) 
+    Ulist=[] 
     integerlist=[]
     for i in [m..maxvalue]:
         if i%m==0:
@@ -70,7 +70,7 @@ def RestrictedU(m,d):
     lowerbound=[]
     for i in [1..d]:
         upperbound.append((m-1)/2)
-        lowerbound.append(i)    #need to make a list that will bound each entry in the composition
+        lowerbound.append(i)  
     for i in [d+1..size]:
         upperbound.append((m-1))
         lowerbound.append(i)
@@ -78,7 +78,7 @@ def RestrictedU(m,d):
     for k in Ulist:
         K=Compositions(k, min_slope=1, length=2*d, outer=upperbound, inner=lowerbound)
         for i in [0..len(K)-1]:
-            compositionlist.append(list(K[i])) #need to convert the type from an IntegerLExList to List
+            compositionlist.append(list(K[i])) 
     return compositionlist
 
 
@@ -99,7 +99,7 @@ def Bset(m,d,Ufile):
     #print(Blist)
     Badlist=[]
     for alpha in Blist:
-        for t in [1..g]: #I think I only need to check up to g not m. t and -t in Z/mZ should give same result. need to prove?
+        for t in [1..g]: 
             if gcd(t,m)==1:
                 size=tuplesize(scalarproduct(alpha,t,m),m)
                 if size!=d: #(2*d-2)/2+1:
